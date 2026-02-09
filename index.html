@@ -169,14 +169,7 @@
       "Last chance... just kidding, say YES!",
     ];
 
-    // Move the No button away on hover (desktop)
-    noBtn.addEventListener('mouseover', function () {
-      moveNoButton();
-    });
-
-    // Handle tap on mobile
-    noBtn.addEventListener('click', function (e) {
-      e.preventDefault();
+    function handleNo() {
       noCount++;
 
       // Show a pleading message
@@ -191,6 +184,15 @@
       noBtn.style.transform = `scale(${noScale})`;
 
       moveNoButton();
+    }
+
+    // Move the No button away on hover (desktop)
+    noBtn.addEventListener('mouseover', handleNo);
+
+    // Handle tap on mobile
+    noBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      handleNo();
     });
 
     function moveNoButton() {
